@@ -1,0 +1,11 @@
+{
+  "port": 4000,
+  "forbid": [
+	  "*.log",
+	  "*~",
+	  "*.bak",
+	  "*.old"
+  ],
+  "compress" : true,
+  "log-format" : "combined"
+}
