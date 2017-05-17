@@ -3,7 +3,7 @@ FROM node:argon
 RUN mkdir -p /app && mkdir -p /www
 WORKDIR /app
 
-RUN npm install local-web-server@1.2 -g -q
+RUN npm install https://github.com/touv/local-web-server -g -q
 RUN npm install supervisor@0.12 -g -q
 
 COPY ./.local-web-server.json /app
