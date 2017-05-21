@@ -7,5 +7,13 @@
 	  "*.old"
   ],
   "compress" : true,
-  "log-format" : "combined"
+  "log-format" : "combined",
+  "crontab" : {
+    "when": "* * * * *",
+    "commands" : [
+      "# exemple montrant comment mettre à jour automatiquement le contenu de /www depuis un dépôt git",
+      "test -d /www/.git || (cd /www && git init && git remote add origin https://github.com/istex/istex.github.io)",
+      "cd /www/ && git pull origin master"
+    ]
+  }
 }
