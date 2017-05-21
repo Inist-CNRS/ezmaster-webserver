@@ -4,7 +4,8 @@
 	  "*.log",
 	  "*~",
 	  "*.bak",
-	  "*.old"
+	  "*.old",
+    ".git"
   ],
   "compress" : true,
   "log-format" : "combined",
