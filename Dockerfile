@@ -1,12 +1,19 @@
 FROM node:6.10.3
 
+# to have git in the shell
+# (to be able to use it in the crontab stuff)
+RUN apt-get update && apt-get install -y git
+
 RUN mkdir -p /app && mkdir -p /www
 WORKDIR /app
 
-RUN npm install https://github.com/touv/local-web-server -g -q
-RUN npm install supervisor@0.12 -g -q
+# install npm dependencies
+WORKDIR /app
+COPY ./package.json /app/package.json
+RUN npm install && npm cache clean
 
 COPY ./.local-web-server.json /app
+COPY ./crontab.js /app
 
 # ezmasterization of webserver
 # see https://github.com/Inist-CNRS/ezmaster
@@ -17,4 +24,4 @@ RUN echo '{ \
 }' > /etc/ezmaster.json
 
 EXPOSE 4000
-ENTRYPOINT ["supervisor", "-x", "ws", "-e", "json", "-w", "/app", "--", "-d", "/www"]
+ENTRYPOINT ["npm", "run", "start-in-docker"]
