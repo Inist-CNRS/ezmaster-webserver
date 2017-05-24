@@ -1,6 +1,6 @@
 {
   "name": "ezmaster-webserver",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)",
   "scripts": {
     "docker:web-server": "supervisor -x ws -e json -w /app -- -d /www",
