@@ -20,10 +20,10 @@
   },
   "homepage": "https://github.com/Inist-CNRS/ezmaster-webserver#readme",
   "dependencies": {
-    "local-web-server": "git+https://github.com/touv/local-web-server.git",
-    "node-schedule": "^1.2.2",
-    "npm-run-all": "^4.0.2",
-    "shelljs": "^0.7.7",
-    "supervisor": "^0.12.0"
+    "local-web-server": "1.2.6",
+    "node-schedule": "1.2.2",
+    "npm-run-all": "4.0.2",
+    "shelljs": "0.7.7",
+    "supervisor": "0.12.0"
   }
 }
