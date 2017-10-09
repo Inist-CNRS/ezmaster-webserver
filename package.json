@@ -3,12 +3,13 @@
   "version": "3.1.0",
   "description": "Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)",
   "scripts": {
-    "docker:web-server": "supervisor -x ws -e json -w /app -- -d /www",
-    "docker:crontab": "supervisor -e json -w /app crontab.js",
+    "docker:web-server": "nginx -g 'daemon off;'",
+    "#docker:crontab": "supervisor -e json -w /app crontab.js",
     "debug:web-server": "supervisor -x ws -e json -w . -- -d ./www",
     "debug:crontab": "supervisor -e json -w . ./crontab.js",
     "start-in-docker": "npm-run-all --parallel docker:*",
-    "start-in-debug": "npm-run-all --parallel debug:*"
+    "start-in-debug": "npm-run-all --parallel debug:*",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,6 @@
   },
   "homepage": "https://github.com/Inist-CNRS/ezmaster-webserver#readme",
   "dependencies": {
-    "local-web-server": "1.2.6",
     "node-schedule": "1.2.2",
     "npm-run-all": "4.0.2",
     "shelljs": "0.7.7",
