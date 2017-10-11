@@ -1,4 +1,7 @@
 # ezmaster-webserver
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/inistcnrs/ezmaster-webserver.svg)](https://registry.hub.docker.com/u/inistcnrs/ezmaster-webserver/)
+
 Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)
 
 ## Usage
