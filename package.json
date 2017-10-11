@@ -1,6 +1,6 @@
 {
   "name": "ezmaster-webserver",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)",
   "scripts": {
     "docker:web-server": "nginx -g 'daemon off;'",

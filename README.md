@@ -3,7 +3,7 @@ Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)
 
 ## Usage
 
-- Add the application in your [ezmaster](https://github.com/Inist-CNRS/ezmaster) ([inistcnrs/ezmaster-webserver:1.0.0](https://hub.docker.com/r/inistcnrs/ezmaster-webserver/tags/)) then create a new instance
+- Add the application in your [ezmaster](https://github.com/Inist-CNRS/ezmaster) ([inistcnrs/ezmaster-webserver:4.0.1](https://hub.docker.com/r/inistcnrs/ezmaster-webserver/tags/)) then create a new instance
 - To configure your web server, have a look to nginx config:
   https://www.nginx.com/resources/wiki/start/topics/examples/full/
   - to disabled logs, just switch error_log and access_log lines with /dev/null
@@ -34,7 +34,7 @@ To run stuff locally, just type:
 
 ```
 make build
-docker run -it --name ezmaster-webserver --rm -p 8080:80 inistcnrs/ezmaster-webserver:latest
+docker run -it --name ezmaster-webserver --rm -p 8080:80 inistcnrs/ezmaster-webserver:4.0.1
 ```
 
 Then open your browser on http://localhost:8080
