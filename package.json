@@ -3,12 +3,13 @@
   "version": "3.1.0",
   "description": "Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)",
   "scripts": {
-    "docker:web-server": "supervisor -x ws -e json -w /app -- -d /www",
-    "docker:crontab": "supervisor -e json -w /app crontab.js",
-    "debug:web-server": "supervisor -x ws -e json -w . -- -d ./www",
-    "debug:crontab": "supervisor -e json -w . ./crontab.js",
-    "start-in-docker": "npm-run-all --parallel docker:*",
-    "start-in-debug": "npm-run-all --parallel debug:*"
+    "docker:web-server": "nginx -g 'daemon off;'",
+    "docker:crontab": "test ! -f /app/crontab-config.json || node /app/crontab.js",
+    "docker-init:run-entrypoint-scripts": "/bin/entrypoint-scripts-runner",
+    "start": "npm-run-all docker-init:run-entrypoint-scripts --parallel docker:*",
+    "insertversion:readme": "sed -i \"s#\\(inist-cnrs/ezmaster-webserver:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" README.md",
+    "version": "npm run insertversion:readme && git add README.md",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,8 @@
   },
   "homepage": "https://github.com/Inist-CNRS/ezmaster-webserver#readme",
   "dependencies": {
-    "local-web-server": "1.2.6",
     "node-schedule": "1.2.2",
     "npm-run-all": "4.0.2",
-    "shelljs": "0.7.7",
-    "supervisor": "0.12.0"
+    "shelljs": "0.7.7"
   }
 }

@@ -1,18 +1,18 @@
 var schedule = require('node-schedule');
 var shell    = require('shelljs');
-var config   = require('./.local-web-server.json');
+var config   = require('./crontab-config.json');
 
-var j = schedule.scheduleJob(config.crontab.when, runCrontabStuff);
+var j = schedule.scheduleJob(config.when, runCrontabStuff);
 
 function runCrontabStuff() {
-  if (!config.crontab.options.silent) {
+  if (!config.options.silent) {
     console.log(new Date() + ' - ezmaster-webserver: running cron tasks');
   }
-  config.crontab.commands.forEach(function (cmd) {
-    if (!config.crontab.options.silent) {
+  config.commands.forEach(function (cmd) {
+    if (!config.options.silent) {
       console.log(new Date() + ' - ezmaster-webserver: running ' + cmd);
     }
-    shell.exec(cmd, { silent: config.crontab.options.silent });
+    shell.exec(cmd, { silent: config.options.silent });
   });
 }
 runCrontabStuff();
