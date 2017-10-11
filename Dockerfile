@@ -28,7 +28,7 @@ RUN mkdir -p /www
 # see https://github.com/Inist-CNRS/ezmaster
 RUN echo '{ \
   "httpPort": 80, \
-  "configPath": "/etc/nginx/conf.d/default.conf", \
+  "configPath": "/etc/nginx/nginx.conf", \
   "configType": "text", \
   "dataPath":   "/www" \
 }' > /etc/ezmaster.json
