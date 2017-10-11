@@ -14,12 +14,15 @@ WORKDIR /app
 COPY ./package.json /app/package.json
 RUN npm install
 
+# crontab script
+COPY ./crontab.js /app/crontab.js
+
 # nginx config
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./entrypoint-scripts-runner /bin/entrypoint-scripts-runner
 
-# demo www content
-RUN mkdir -p /www && echo "ezmaster-webserver index.html example" > /www/index.html
+# empty www content
+RUN mkdir -p /www
 
 # ezmasterization of webserver
 # see https://github.com/Inist-CNRS/ezmaster
@@ -31,4 +34,4 @@ RUN echo '{ \
 }' > /etc/ezmaster.json
 
 EXPOSE 80
-ENTRYPOINT ["npm", "run", "start-in-docker"]
+ENTRYPOINT ["npm", "start"]
