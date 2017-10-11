@@ -26,6 +26,7 @@ COPY ./crontab.js /app
 RUN echo '{ \
   "httpPort": 80, \
   "configPath": "/etc/nginx/conf.d/default.conf", \
+  "configType": "text", \
   "dataPath":   "/www" \
 }' > /etc/ezmaster.json
 
