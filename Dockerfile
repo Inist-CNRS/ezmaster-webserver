@@ -18,7 +18,7 @@ RUN npm install
 COPY ./crontab.js /app/crontab.js
 
 # nginx config
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./entrypoint-scripts-runner /bin/entrypoint-scripts-runner
 
 # empty www content
