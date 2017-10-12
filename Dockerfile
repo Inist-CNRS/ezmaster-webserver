@@ -4,7 +4,7 @@ FROM nginx:1.13.3
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y update && apt-get -y install vim curl gnupg2 git cron
 
-# nodejs installation used for build tools
+# nodejs installation used for startup scripts
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y build-essential nodejs
 
