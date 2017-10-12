@@ -12,7 +12,7 @@ Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)
   - to disabled logs, just switch error_log and access_log lines with /dev/null
 - To serve content, just upload your files into `/www`
 
-* You can also configure a crontab thank to the JSON located at the end of the config. It looks like that:
+* You can also configure a crontab thank to the JSON located at the end of the [config](https://github.com/Inist-CNRS/ezmaster-webserver/blob/master/nginx.conf#L60-L71). It looks like that:
 
   ```json
   {
