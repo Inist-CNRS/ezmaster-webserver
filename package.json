@@ -8,7 +8,8 @@
     "docker-init:run-entrypoint-scripts": "/bin/entrypoint-scripts-runner",
     "start": "npm-run-all docker-init:run-entrypoint-scripts --parallel docker:*",
     "insertversion:readme": "sed -i \"s#\\(inistcnrs/ezmaster-webserver:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" README.md",
-    "version": "npm run insertversion:readme && git add README.md",
+    "insertversion:makefile": "sed -i \"s#\\(inistcnrs/ezmaster-webserver:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" Makefile",
+    "version": "npm run insertversion:readme insertversion:makefile && git add README.md Makefile",
     "postversion": "git push && git push --tags"
   },
   "repository": {
