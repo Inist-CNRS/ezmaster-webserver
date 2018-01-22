@@ -4,6 +4,10 @@
 
 Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)
 
+## Prerequisites 
+
+[ezmaster](https://github.com/Inist-CNRS/ezmaster) >= [3.8.0](https://github.com/Inist-CNRS/ezmaster#ezmaster-380)
+
 ## Usage
 
 - Add the application in your [ezmaster](https://github.com/Inist-CNRS/ezmaster) ([inistcnrs/ezmaster-webserver:4.1.2](https://hub.docker.com/r/inistcnrs/ezmaster-webserver/tags/)) then create a new instance
