@@ -16,24 +16,46 @@ Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)
   - to disabled logs, just switch error_log and access_log lines with /dev/null
 - To serve content, just upload your files into `/www`
 
-* You can also configure a crontab thank to the JSON located at the end of the [config](https://github.com/Inist-CNRS/ezmaster-webserver/blob/master/nginx.conf#L60-L71). It looks like that:
+### Crontab feature
 
-  ```json
-  {
-    "when": "* * * * *",
-    "commands": [
-      "# exemple montrant comment mettre à jour automatiquement le contenu de /www depuis un dépôt git",
-      "test -d /www/.git || (cd /www && git init && git remote add origin https://github.com/istex/istex.github.io)",
-      "cd /www/ && git pull origin master"
-    ],
-    "options": {
-      "silent": false
-    }
-  }
+You can also configure a crontab thank to the config located at the end of the [config](https://github.com/Inist-CNRS/ezmaster-webserver/blob/master/nginx.conf#L60-L71). It looks like that:
+
   ```
+### echo '{' > /app/crontab-config.json
+### echo '  "when": "* * * * *",' >> /app/crontab-config.json
+### echo '  "commands": [' >> /app/crontab-config.json
+### echo '    "# exemple montrant comment mettre à jour automatiquement le contenu de /www depuis un dépôt git",' >> /app/crontab-config.json
+### echo '    "#test -d /www/.git || (cd /www && git init && git remote add origin https://github.com/istex/istex.github.io)",' >> /app/crontab-config.json
+### echo '    "#cd /www/ && git fetch --all && git reset --hard origin/master"' >> /app/crontab-config.json
+### echo '  ],' >> /app/crontab-config.json
+### echo '  "options":' >> /app/crontab-config.json
+### echo '  {' >> /app/crontab-config.json
+### echo '    "silent": false' >> /app/crontab-config.json
+### echo '  }' >> /app/crontab-config.json
+### echo '}' >> /app/crontab-config.json
+```
 
-  * If your want to disable the crontab, just remove the `"commands"` content.
-  * If you want to hide crontab logs, set `"silent"` to true
+Then to enable the crontab commands, just remove the # character in front of the commands: `#test -d /www/.git [...]` and `#cd /www/ && git fetch [...]`
+These commands will run periodicaly git clone and git fetch in the www folder so that it's easy to have a uptodate website synchronized with a github repository.
+If you want to hide crontab logs (in the ezmaster log), set `"silent"` to true
+
+### Authentication feature
+
+To enable autentication, just edit this line with the wanted login/password in the config:
+
+```
+### # use http://www.htaccesstools.com/htpasswd-generator/ to generate login/mdp
+### echo 'admin:$apr1$H8V0oIUl$LnpG5bBnWF4fwoCR7evtr/' > /etc/nginx/.htpasswd
+```
+
+And uncomment these 2 lines in the config:
+
+```
+      # uncomment for authentication
+      # see https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-nginx-on-ubuntu-14-04
+      #auth_basic "Restricted Content";
+      #auth_basic_user_file /etc/nginx/.htpasswd;
+```
 
 ## Developer
 
