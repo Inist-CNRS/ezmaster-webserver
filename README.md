@@ -6,7 +6,7 @@ Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)
 
 ## Prerequisites 
 
-[ezmaster](https://github.com/Inist-CNRS/ezmaster) >= [3.8.0](https://github.com/Inist-CNRS/ezmaster#ezmaster-380)
+[ezmaster](https://github.com/Inist-CNRS/ezmaster) ⩾ [3.8.0](https://github.com/Inist-CNRS/ezmaster#ezmaster-380)
 
 ## Usage
 
