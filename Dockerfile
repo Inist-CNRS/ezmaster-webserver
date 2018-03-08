@@ -23,7 +23,6 @@ COPY ./entrypoint-scripts-runner /bin/entrypoint-scripts-runner
 
 # empty www content
 RUN mkdir -p /www
-RUN touch /www/test.txt
 
 # ezmasterization of webserver
 # see https://github.com/Inist-CNRS/ezmaster
