@@ -12,7 +12,10 @@ function runCrontabStuff() {
     if (!config.options.silent) {
       console.log(new Date() + ' - ezmaster-webserver: running ' + cmd);
     }
-    shell.exec(cmd, { silent: config.options.silent, env: config.env });
+    shell.exec(cmd, {
+      silent: config.options.silent,
+      env: Object.assign(process.env, config.env)
+    });
   });
 }
 runCrontabStuff();
