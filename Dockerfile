@@ -1,37 +1,27 @@
-FROM nginx:1.13.3
+FROM node:12
 
-# to help docker debugging
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get -y update && apt-get -y install vim curl gnupg2 git cron
-
-# nodejs installation used for startup scripts
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get install -y build-essential nodejs
-
-# install npm dependencies
-RUN mkdir -p /app
+RUN mkdir -p /app/data
 WORKDIR /app
-COPY ./package.json /app/package.json
-RUN npm install
 
-# crontab script
-COPY ./crontab.js /app/crontab.js
-
-# nginx config
-COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./entrypoint-scripts-runner /bin/entrypoint-scripts-runner
-
-# empty www content
-RUN mkdir -p /www
-
-# ezmasterization of webserver
 # see https://github.com/Inist-CNRS/ezmaster
 RUN echo '{ \
-  "httpPort": 80, \
-  "configPath": "/etc/nginx/nginx.conf", \
-  "configType": "text", \
-  "dataPath":   "/www" \
+  "httpPort": 31976, \
+  "configPath": "/app/config.json", \
+  "dataPath": "/app/data" \
 }' > /etc/ezmaster.json
 
-EXPOSE 80
-ENTRYPOINT ["npm", "start"]
+RUN npm init -y
+RUN npm install local-web-server@3.0.7
+RUN npm install node-schedule@1.3.1
+RUN npm install shelljs@0.8.3
+
+EXPOSE 8000
+COPY config2vars /app
+COPY crontab /app
+COPY gitsync /app
+COPY docker-entrypoint.sh /app
+COPY ws.js /app
+COPY config.json /app
+
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["--directory", "/app/data"]

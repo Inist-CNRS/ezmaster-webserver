@@ -1,0 +1,15 @@
+version: '3'
+services:
+    ezmaster-webserver:
+        container_name: ezmaster-webserver
+        build:
+            context: .
+            args:
+                - http_proxy
+                - https_proxy
+        image: ezmaster-webserver:5.0.0
+        environment:
+            - http_proxy
+            - https_proxy
+        ports:
+            - "8000:8000"
