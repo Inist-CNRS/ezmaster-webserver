@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DIRECTORY=$(cd `dirname $0` && pwd)
+REPOSITORY=${1:?the first argument of the command should be the URL of a git repository.}
+BRANCH=${2:-master}
+
+echo "Syncing $DIRECTORY/data from $REPOSITORY with branch $BRANCH"
+
+test ! -d "$DIRECTORY/data/" && mkdir -p "$DIRECTORY/data/"
+test -d "$DIRECTORY/data/.git" &&  rm -rf "$DIRECTORY/data/.git"
+cd "$DIRECTORY/data/" && git init && git remote add origin "$REPOSITORY"
+cd "$DIRECTORY/data/" && git -c core.askpass=true fetch --all && git reset --hard "origin/$BRANCH"
+cd "$DIRECTORY/data/" && (git -c core.askpass=true ls-remote -q $REPOSITORY >/dev/null || rm -rf "$DIRECTORY/data/.git")
+
