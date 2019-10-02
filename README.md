@@ -25,6 +25,7 @@ To sync with git repo, just change the config :
 {
  "environnement": {
         "NODE_ENV": "production",
+        "CRON_VERBOSE": true,
         "GIT_REPOSITORY": "https://github.com/Inist-CNRS/lodex-extented",
         "GIT_BRANCH": "v3"
     },
