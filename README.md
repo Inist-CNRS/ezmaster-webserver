@@ -51,6 +51,22 @@ To enable autentication, just edit this line with the wanted login/password in t
 }
 ```
 
+### Redirect feature
+
+Re-route path using regex, just add rules with from/to key in the config:
+```
+ "options" : { 
+        "rewrite": [
+          { 
+            "from": "/(.*)", 
+            "to": "https://user-doc.lodex.inist.fr/$1" 
+          }
+        ]
+    }
+```
+
+
+
 ### Advanced Configuration
 
 ```
