@@ -1,6 +1,6 @@
 {
     "name": "ezmaster-webserver",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "description": "Web Server for [ezmaster](https://github.com/Inist-CNRS/ezmaster)",
     "directories": {
         "test": "test"
