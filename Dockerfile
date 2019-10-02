@@ -5,7 +5,7 @@ WORKDIR /app
 
 # see https://github.com/Inist-CNRS/ezmaster
 RUN echo '{ \
-  "httpPort": 31976, \
+  "httpPort": 8000, \
   "configPath": "/app/config.json", \
   "dataPath": "/app/data" \
 }' > /etc/ezmaster.json
