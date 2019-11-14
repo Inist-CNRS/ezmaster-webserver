@@ -7,7 +7,7 @@ services:
             args:
                 - http_proxy
                 - https_proxy
-        image: ezmaster-webserver:5.0.3
+        image: ezmaster-webserver:5.0.4
         environment:
             - http_proxy
             - https_proxy
