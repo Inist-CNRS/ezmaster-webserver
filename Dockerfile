@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:lts-alpine
 
 RUN mkdir -p /app/data
 WORKDIR /app
